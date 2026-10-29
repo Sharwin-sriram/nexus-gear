@@ -1,0 +1,16 @@
+# Node dependencies
+node_modules/
+package-lock.json
+
+# Maven build artifacts
+backend/target/
+target/
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# OS metadata
+.DS_Store
+Thumbs.db

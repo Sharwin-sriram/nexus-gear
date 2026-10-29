@@ -1,0 +1,8 @@
+node_modules/
+.git/
+*.pdf
+.DS_Store
+Thumbs.db
+target/
+.idea/
+*.iml

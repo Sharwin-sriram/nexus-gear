@@ -1,0 +1,41 @@
+# Render Blueprint specification for NEXUS GEAR Full-Stack Application
+# Docs: https://render.com/docs/blueprint-spec
+
+version: "1"
+
+services:
+  # 1. Full-Stack Web Service (Spring Boot Backend + Static Frontend in Docker)
+  - type: web
+    name: nexus-gear-app
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/products
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: nexus-gear-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+        value: org.postgresql.Driver
+      - key: SPRING_JPA_DATABASE_PLATFORM
+        value: org.hibernate.dialect.PostgreSQLDialect
+
+  # 2. Standalone Frontend (Instant Static Site option)
+  - type: web
+    name: nexus-gear-static-ui
+    env: static
+    plan: free
+    region: oregon
+    staticPublishPath: ./public
+
+databases:
+  # 3. PostgreSQL Database
+  - name: nexus-gear-db
+    databaseName: nexusgeardb
+    user: nexusadmin
+    plan: free
+    region: oregon
