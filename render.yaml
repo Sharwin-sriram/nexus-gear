@@ -28,8 +28,7 @@ services:
   - type: web
     name: nexus-gear-static-ui
     env: static
-    plan: free
-    region: oregon
+    buildCommand: echo "Static site ready"
     staticPublishPath: ./public
 
 databases:
