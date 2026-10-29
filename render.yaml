@@ -19,10 +19,6 @@ services:
         fromDatabase:
           name: nexus-gear-db
           property: connectionString
-      - key: SPRING_DATASOURCE_DRIVER_CLASS_NAME
-        value: org.postgresql.Driver
-      - key: SPRING_JPA_DATABASE_PLATFORM
-        value: org.hibernate.dialect.PostgreSQLDialect
 
   # 2. Standalone Frontend (Instant Static Site option)
   - type: web
